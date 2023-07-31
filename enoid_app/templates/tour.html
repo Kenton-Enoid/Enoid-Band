@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Tour - Enoid_App{% endblock %}
+
+{% block content %}
+<!-- The Tour Section -->
+<div class="bg-dark text-white py-5" id="tour">
+    <div class="container" style="max-width:800px">
+        <h2 class="text-center">TOUR DATES</h2>
+        <p class="text-center fst-italic"><i>Remember to book your tickets!</i></p><br>
+
+        <ul class="list-group">
+            {% for tour_date in tour_dates %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    {{ tour_date.date }}
+                    {% if tour_date.tickets_remaining == 0 %}
+                        <span class="badge bg-danger">Sold out</span>
+                    {% else %}
+                        <span class="badge bg-secondary">{{ tour_date.tickets_remaining }}</span>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+
+        <div class="row row-cols-1 row-cols-md-3 g-4 py-5">
+            {% for tour_date in tour_dates %}
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="{{ tour_date.image_url }}" class="card-img-top my-img" alt="{{ tour_date.location }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ tour_date.location }}</h5>
+                            <p class="card-text"><small class="text-muted">{{ tour_date.date }}</small></p>
+                            <p class="card-text">{{ tour_date.venue }}</p>
+                        </div>
+                        <div class="card-footer">
+                            <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#ticketModal">Buy Tickets</button>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

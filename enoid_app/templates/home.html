@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home - Enoid_App{% endblock %}
+
+{% block content %}
+  <!-- Header -->
+  <header class="p-3 text-bg-dark">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-lg-start">
+        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+          <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"/></svg>
+        </a>
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li><a href="#" class="btn btn-secondary rounded-pill px-3 me-2" type="button">HOME</a></li>
+          <li><a href="#band" class="btn btn-secondary rounded-pill px-3 me-2" type="button">BAND</a></li>
+          <li><a href="{% url 'tour' %}" class="btn btn-secondary rounded-pill px-3 me-2" type="button">TOUR</a></li>
+          <li><a href="{% url 'contact' %}" class="btn btn-secondary rounded-pill px-3 me-2" type="button">CONTACT</a></li>
+          <div class="dropdown">
+            <button class="btn btn-secondary rounded-pill px-3 dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                More
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <li><a class="dropdown-item" href="#">Merchandise</a></li>
+                <li><a class="dropdown-item" href="#">Extras</a></li>
+                <li><a class="dropdown-item" href="#">Media</a></li>
+            </ul>
+            </div>
+        </ul>
+      
+        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+          <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search" value="Search">
+        </form>
+
+        <div class="text-end">
+          {% if user.is_authenticated %}
+            <a href="{% url 'logout' %}" class="btn btn-outline-light me-2">Logout</a>
+          {% else %}
+            <a href="{% url 'login' %}" class="btn btn-outline-light me-2">Login</a>
+            <a href="{% url 'register' %}" class="btn btn-info">Sign-up</a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main content -->
+  <main>
+    <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+      <!-- Slides -->
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="{% static 'images/Slide1.jpg' %}" alt="Los Angeles" style="width:100%">
+          <div class="carousel-caption d-none d-md-block">
+            <h3>Johannesburg</h3>
+            <p>We had the best time playing at the Emperors Palace</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="{% static 'images/Slide2.jpg' %}" alt="New York" style="width:100%">
+          <div class="carousel-caption d-none d-md-block">
+            <h3>Cape Town</h3>
+            <p>Awesome atmosphere! Until next Cape Town.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="{% static 'images/Slide3.jpg' %}" alt="New York" style="width:100%">
+          <div class="carousel-caption d-none d-md-block">
+            <h3>Durban</h3>
+            <p>It's a fact "Durban Rocks", Thank you Durban!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- The Band Section -->
+    <div class="container text-center py-5" style="max-width:800px" id="band">
+      <h2 class="fw-bold">THE BAND</h2>
+      <p class="fst-italic"><i>We love music</i></p>
+      <p class="text-justify">Once upon a time, there was a band of four friends who loved to make music together. They were all passionate about their craft and spent countless hours practicing and perfecting their sound. They dreamed of one day becoming famous and sharing their music with the world.
+        One day, they decided to enter a local talent competition. They worked hard to prepare for the event and when the day finally arrived, they gave it their all. The audience was blown away by their performance and the judges were impressed. The band won first place and their dream of becoming famous was finally within reach.
+        From then on, the band's popularity grew and they started to gain a following. They were invited to play at bigger and bigger venues and eventually landed a record deal. Their music was played on the radio and they even went on tour.
+        The band never forgot their humble beginnings and always remained grateful for their success. They continued to make music that touched the hearts of people all over the world and their legacy lived on for generations to come.
+      </p>
+      <div class="row py-4">
+        <div class="col">
+          <p>Brian McKenny</p>
+          <img src="{% static 'images/member1.jpg' %}" class="rounded mb-3" alt="Brian McKenny" style="width:80%">
+        </div>
+        <div class="col">
+          <p>Jobe Gilbert</p>
+          <img src="{% static 'images/member2.jpg' %}" class="rounded mb-3" alt="Jobe Gilbert" style="width:75%">
+        </div>
+        <div class="col">
+          <p>Joah Cancelo</p>
+          <img src="{% static 'images/member3.jpg' %}" class="rounded mb-4" alt="Joah Cancelo" style="width:61%">
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!--End of content here, I just added a band-vibe image to make it look a bit nicer-->
+  <!-- Image of location/map -->
+  <img src="{% static 'images/band-vibe.jpg' %}" class="img-fluid" style="width:100%">
+
+  <!-- Footer Section -->
+  <footer class="container-fluid py-4 text-center bg-light">
+    <i class="fa fa-facebook-square" aria-hidden="true"></i>
+    <i class="fa fa-instagram" aria-hidden="true"></i>
+    <i class="fa fa-pinterest-square" aria-hidden="true"></i>
+    <i class="fa fa-twitter-square" aria-hidden="true"></i>
+    <i class="fa fa-linkedin-square" aria-hidden="true"></i>
+    <p class="text-muted">&copy; 2023 Kenton_Enoid</p>
+  </footer>
+
+{% endblock %}

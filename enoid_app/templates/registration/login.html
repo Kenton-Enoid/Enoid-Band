@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login & Registration Form</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="{% static 'css/login.css' %}">
+  <link rel="stylesheet" href="{% static 'js/scripts.js' %}">
+
+  <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700,800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div class="cont">
+    <div class="form sign-in">
+      <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        <h2>Log In</h2>
+        {% if messages %}
+          <ul class="messages">
+            {% for message in messages %}
+              <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+        <label>
+            <span>Username</span>
+            <input type="text" name="username">
+        </label>
+        <label>
+            <span>Password</span>
+            <input type="password" name="password">
+        </label>
+        <button class="submit" type="submit">Log In</button>
+      </form>  
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Contact - Enoid_App{% endblock %}
+
+{% block content %}
+<!-- The Contact Section -->
+<div class="container-fluid p-5" style="max-width:800px" id="contact">
+    <h2 class="text-center">CONTACT</h2>
+    <p class="text-center"><i>Fan? Drop a note!</i></p>
+    <div class="row py-4">
+      <div class="col-md-6 text-lg">
+        <i class="fa fa-map-marker" style="width:30px"></i> Pretoria, SA<br>
+        <i class="fa fa-phone" style="width:30px"></i> Phone: 012 567 8756<br>
+        <i class="fa fa-envelope" style="width:30px"> </i> Email: enoid@gmail.com<br>
+      </div>
+      <div class="col-md-6">
+        <form action="/action_page.php" target="_blank">
+          <div class="row mb-2">
+            <div class="col-md-6">
+              <input class="form-control" type="text" placeholder="Name" required name="Name">
+            </div>
+            <div class="col-md-6">
+              <input class="form-control" type="text" placeholder="Email" required name="Email">
+            </div>
+          </div>
+          <input class="form-control mb-2" type="text" placeholder="Message" required name="Message">
+          <button class="btn btn-dark float-right" type="submit">SEND</button>
+        </form>
+      </div>
+    </div>
+</div>
+{% endblock %}
