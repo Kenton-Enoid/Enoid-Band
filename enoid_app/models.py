@@ -4,6 +4,9 @@ from django.templatetags.static import static # new
 # Create your models here.
 # Create model to represent tour dates for the band
 class TourDate(models.Model):
+    """
+    Represents a tour date for the band.
+    """
     date = models.DateField()
     location = models.CharField(max_length=100)
     venue = models.CharField(max_length=100)
@@ -11,6 +14,10 @@ class TourDate(models.Model):
     image_url = models.URLField(default=static('images/default-image.jpg'))
 
     def __str__(self):
+        """
+        Returns a string representation of the tour date.
+        :return: str
+        """
         return f'''{self.date}
                    {self.location}
                    {self.venue}
@@ -18,11 +25,18 @@ class TourDate(models.Model):
 
 # Create a model for the messages or inquiries from the "Contact Page"
 class Message(models.Model):
+    """
+    Represents a message or inquiry from the contact page.
+    """
     name = models.CharField(max_length=100)
     email = models.EmailField()
     message = models.TextField()
 
     def __str__(self):
+        """
+        Returns a string representation of the message.
+        :return: str
+        """
         return f'''{self.name}
                    {self.email}
                    {self.message}
